@@ -7,6 +7,7 @@ def convert_to_int(str)
   end
 end
 
+
 # PHASE 3
 FRUITS = ["apple", "banana", "orange"]
 
