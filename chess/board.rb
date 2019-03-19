@@ -7,7 +7,6 @@ class Board
     def initialize
         @grid = Array.new(8) {Array.new(8)}
         reset
-        puts
     end
 
     def reset
@@ -37,8 +36,7 @@ class Board
             self[x,y] = piece
             self[a,b] = NullPiece.new
         end
-        render
-        puts
+        # puts
     end
 
     def [](row, col)
