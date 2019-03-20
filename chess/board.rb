@@ -17,7 +17,7 @@ class Board
                 end
             else   
                 row.each_with_index do |col, j|
-                    grid[i][j] = Piece.new
+                    grid[i][j] = Piece.new(:red, self, [i,j])
                 end
             end
         end

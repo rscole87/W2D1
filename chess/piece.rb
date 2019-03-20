@@ -1,45 +1,57 @@
 require 'singleton'
+require_relative 'slide_and_step'
 
 class Piece
-    attr_reader :name, :color, :symbol
+    attr_reader :name, :color, :board
+    attr_accessor :pos
 
-    def initialize(name = "P")
+    def initialize( color, board, position,  name = "P")
         @name = name
-        @color = "c"
-        @symbol = "s"
+        @board = board
+        @color = color
+        @pos = position
     end
 
     # def inspect
     #     puts @name
     # end
-
-    def moves
-        #Returns potential piece positions.
-    end
 end
 
-class NullPiece < Piece
+class NullPiece
     include Singleton 
 
     def initialize
-        super(" ")
+        # super(nil, board, " ")
+        @symbol = " "
+        @color = :none
+    end
+
+    def moves
     end
 end
 
-class Bishop
+class Bishop < Piece
+    include Slideable
+
+    def move_dirs
+        diagonal_dirs
+    end
 
 end
 
-class Rook
+class Rook < Piece
+    include Slideable
+
+    def move_dirs
+        horizontal_and_vertical_dirs
+    end
 end
 
-class Queen
+class Queen < Piece
+    include Slideable
+
+    def move_dirs
+        horizontal_and_vertical_dirs + diagonal_dirs
+    end
 end
 
-module Slideable 
-
-end
-
-module Stepable
-
-end
